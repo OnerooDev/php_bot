@@ -19,9 +19,6 @@ use Longman\TelegramBot\Entities\InlineQuery\InlineQueryResultArticle;
 use Longman\TelegramBot\Entities\InputMessageContent\InputTextMessageContent;
 use Longman\TelegramBot\Request;
 
-require_once "../module/coinbase.php";
-require_once "../bot/vendor/easybtc.php";
-
 /**
  * Callback query command
  *
@@ -111,7 +108,7 @@ class CallbackqueryCommand extends SystemCommand
 				exit();
 			}
 		}
-		
+
 
         $data = [
 			'chat_id'      => $chat_id,

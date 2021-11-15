@@ -8,10 +8,10 @@ class Config{
 	public $secret = "cdsfg432ntb74cdavgnhjt3rfdcd3";
 
 	public $host= "localhost";
-	public $db = "dev"; //название бд
+	public $db = "3logic"; //название бд
 	public $db_prefix = ""; //оставить пустым
-	public $user = "dev"; //пользователь бд
-	public $password = "";//пароль
+	public $user = "3logicU"; //пользователь бд
+	public $password = "vhrxdky542-bfer32";//пароль
 
 	//апи ключ
 	public $bot_api_key = '';
