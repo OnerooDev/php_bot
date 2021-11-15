@@ -90,6 +90,10 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data'	=> 'get_item:'
             ]),
             new InlineKeyboardButton([
+              'text'  => 'Ссылка',
+              'url'	=> 'https://t.me/joinchat/sIY1eMgIsyBjMmEy'
+            ]),
+            new InlineKeyboardButton([
               'text'  => 'Назад',
               'callback_data'	=> 'get_back:'
             ])
