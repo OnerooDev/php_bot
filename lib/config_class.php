@@ -14,7 +14,7 @@ class Config{
 	public $password = "vhrxdky542-bfer32";//пароль
 
 	//апи ключ
-	public $bot_api_key = '';
+	public $bot_api_key = '2130771029:AAGjOBLgizT2anby7cFfjXjdpoSmKq_it-o';
 	//имя бота
 	public $bot_username = 't_bot';
 }
