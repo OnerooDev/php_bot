@@ -14,6 +14,8 @@ use Longman\TelegramBot\Commands\SystemCommand;
 use Longman\TelegramBot\Conversation;
 use Longman\TelegramBot\Entities\Keyboard;
 use Longman\TelegramBot\Request;
+use Longman\TelegramBot\Entities\InlineKeyboard;
+use Longman\TelegramBot\Entities\InlineKeyboardButton;
 
 require_once "../lib/config_class.php";
 
@@ -76,40 +78,34 @@ class StartCommand extends SystemCommand
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
-		$ref_id = trim($text);
-		
-		$this->config = new \Config();
-		
-		$mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
-        $mysqli->query("SET NAMES 'utf8'");        
-		
-		
-		//
+
+		    $this->config = new \Config();
+
+		    $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
+        $mysqli->query("SET NAMES 'utf8'");
+
         //Conversation start
         $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
         $this->conversation->stop();
-        
+
         if(isset($user->first_name) && !empty($user->first_name)) $name = $user->first_name;
         else $name = $user->username;
 
-        $text    = "$name, Добро пожаловать в бота поддержки " . PHP_EOL;
-        $text    .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
-        
-        $keyboard = new Keyboard(
-			['Создать запрос'],
-			['Личный кабинет']
-		);
-		
+        $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
+        $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
 
-		$keyboard->setResizeKeyboard(true)
-            ->setOneTimeKeyboard(true)
-            ->setSelective(true);
+        $inline_keyboard = new InlineKeyboard(
+      		[new InlineKeyboardButton([
+      			'text'  => 'Hello',
+      			'callback_data'	=> 'get_hello:'
+      		])]
+    		);
 
         $data = [
-            'chat_id' => $chat_id,
-            'text'    => $text,
-            'parse_mode'    => "HTML",
-			'reply_markup' => $keyboard,
+          'chat_id' => $chat_id,
+          'text'    => $text,
+          'parse_mode'    => "HTML",
+		      'reply_markup' => $inline_keyboard,
         ];
         return Request::sendMessage($data);
     }

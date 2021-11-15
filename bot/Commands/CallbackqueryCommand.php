@@ -49,75 +49,94 @@ class CallbackqueryCommand extends SystemCommand
      * @return \Longman\TelegramBot\Entities\ServerResponse
      * @throws \Longman\TelegramBot\Exception\TelegramException
      */
-    public function execute()
-    {
-        $callback_query    = $this->getCallbackQuery();
-        $callback_query_id = $callback_query->getId();
-        $callback_data     = $callback_query->getData();
+    public function execute() {
+      //принимам входящее сообщение
+      $callback_query    = $this->getCallbackQuery();
+      $callback_query_id = $callback_query->getId();
+      $callback_data     = $callback_query->getData();
 
-		$message = $callback_query->getMessage();
-		$user    = $callback_query->getFrom();
-		$chat_id = $message->getChat()->getId();
-		$user_id = $user->getId();
-		$this->config = new \Config();
-		$mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
-        $mysqli->query("SET NAMES 'utf8'");
+  		$message = $callback_query->getMessage();
+  		$user    = $callback_query->getFrom();
+  		$chat_id = $message->getChat()->getId();
+  		$user_id = $user->getId();
+      //подгружаем данные из конфигурации
+  		$this->config = new \Config();
+      //подключаем бд
+  		$mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
+      $mysqli->query("SET NAMES 'utf8'");
 
-		if($explode[0] == 'get_area'){
+//get_hello
+		  if($explode[0] == 'get_hello'){
+        //извлекаем данные из бд
+          $query = "SELECT * FROM `user` WHERE `id` = '".$user_id."'";
+          $user_query = $mysqli->query($query);
+          $user_array = $user_query->fetch_array();
+        //удаляем старое сообщение
+  				$message_to_edit = $message->getMessageId();
+  				$data_edit = [
+  					'chat_id'    => $chat_id,
+  					'message_id' => $message_to_edit,
+  				];
+  				Request::deleteMessage($data_edit);
+        //
+  				$text .= 'Ну привет '.$user_array['first_name'].PHP_EOL;
 
-			$area = $explode[1];
-			$query = "SELECT * FROM `catalog` WHERE `area` = '".$area."'";
-			$qarea = $mysqli->query($query);
-			$qarea = $qarea->fetch_array();
-			$check = 1;
-			if($check === 1){
+          $inline_keyboard = new InlineKeyboard();
+          $inline_keyboard->addRow(
+            new InlineKeyboardButton([
+              'text'  => 'Item',
+              'callback_data'	=> 'get_item:'
+            ]),
+            new InlineKeyboardButton([
+              'text'  => 'Назад',
+              'callback_data'	=> 'get_back:'
+            ])
+          );
+        //вносим необходимые данные в массив отправляемого сообщения
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
 
-				$message_to_edit = $message->getMessageId();
-				$data_edit = [
-					'chat_id'    => $chat_id,
-					'message_id' => $message_to_edit,
-				];
+          return Request::sendMessage($datas);
+      }
 
-				Request::deleteMessage($data_edit);
+//get_back
+      if($explode[0] == 'get_back'){
+        //удаляем старое сообщение
+  				$message_to_edit = $message->getMessageId();
+  				$data_edit = [
+  					'chat_id'    => $chat_id,
+  					'message_id' => $message_to_edit,
+  				];
+  				Request::deleteMessage($data_edit);
+        //
+          $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
+          $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
 
-				$text .= 'Доступные позиции ⬇️'.$id_trans.PHP_EOL;
-				$datas['text'] = $text;
-				$datas['parse_mode'] = "MARKDOWN";
-				$datas['chat_id'] = $chat_id;
-				$inline_keyboard = new InlineKeyboard();
-                $inline_keyboard->addRow(new InlineKeyboardButton([
-                            'text'  => 'Item - 1',
-                            'callback_data'	=> 'get_item:1'
-                        ]),
-                        new InlineKeyboardButton([
-                            'text'  => 'Item - 2',
-                            'callback_data'	=> 'get_item:2'
-                        ]));
-                $datas['reply_markup'] = $inline_keyboard;
-				return Request::sendMessage($datas);
-			}
-			else{
-				$temp_data = [
-					'callback_query_id' => $callback_query_id,
-					'text'              => 'Нет доступных позиций',
-					'show_alert'        => $callback_data === 'thumb up',
-					'cache_time'        => 5,
-				];
+          $inline_keyboard = new InlineKeyboard(
+        		[new InlineKeyboardButton([
+        			'text'  => 'Hello',
+        			'callback_data'	=> 'get_hello:'
+        		])]
+      		);
+        //вносим необходимые данные в массив отправляемого сообщения
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
 
-				return Request::answerCallbackQuery($temp_data);
-				exit();
-			}
-		}
+          return Request::sendMessage($datas);
+      }
 
+      $data = [
+  			'chat_id'      => $chat_id,
+  			'parse_mode'   => 'MARKDOWN',
+  			'text'         => $text,
+  			'reply_markup' => $inline_keyboard,
+  		];
 
-        $data = [
-			'chat_id'      => $chat_id,
-			'parse_mode'   => 'MARKDOWN',
-			'text'         => $text,
-			'reply_markup' => $inline_keyboard,
-		];
-
-		return Request::sendMessage($data);
-    	}
+  		return Request::sendMessage($data);
+    }
 
 }
