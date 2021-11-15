@@ -1,0 +1,10 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^bot\.potapov\.host$ [NC]
+RewriteRule ^(.*)$ https://bot.potapov.host/$1 [R=301,L]
+
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+RewriteRule ^index\.php$ https://bot.potapov.host/ [R=301,L]
+
+ErrorDocument 404 https://bot.potapov.host/?view=notfound
