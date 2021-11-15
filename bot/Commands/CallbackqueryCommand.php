@@ -65,6 +65,8 @@ class CallbackqueryCommand extends SystemCommand
   		$mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
       $mysqli->query("SET NAMES 'utf8'");
 
+      $explode = explode(":", $callback_data);
+
 //get_hello
 		  if($explode[0] == 'get_hello'){
         //извлекаем данные из бд
