@@ -86,13 +86,17 @@ class CallbackqueryCommand extends SystemCommand
           $inline_keyboard = new InlineKeyboard();
           $inline_keyboard->addRow(
             new InlineKeyboardButton([
-              'text'  => 'Item',
-              'callback_data'	=> 'get_item:'
+              'text'  => 'Чат',
+              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
             ]),
             new InlineKeyboardButton([
-              'text'  => 'Ссылка',
-              'url'	=> 'https://t.me/joinchat/sIY1eMgIsyBjMmEy'
+              'text'  => 'Таблица',
+              'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
             ]),
+//            new InlineKeyboardButton([
+//              'text'  => 'Item',
+//              'callback_data'	=> 'get_item:'
+//            ]),
             new InlineKeyboardButton([
               'text'  => 'Назад',
               'callback_data'	=> 'get_back:'
