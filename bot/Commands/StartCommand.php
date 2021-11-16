@@ -84,29 +84,34 @@ class StartCommand extends SystemCommand
 		    $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
         $mysqli->query("SET NAMES 'utf8'");
 
-        //Conversation start
-        $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
-        $this->conversation->stop();
+// Добавим проверку входящих запросов к команде Start по user_id == 'твой id' 
+        if ($user_id) {
+          //Conversation start
+          $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
+          $this->conversation->stop();
 
-        if(isset($user->first_name) && !empty($user->first_name)) $name = $user->first_name;
-        else $name = $user->username;
+          if(isset($user->first_name) && !empty($user->first_name)) $name = $user->first_name;
+          else $name = $user->username;
 
-        $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
-        $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
+          $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
+          $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
+          $text .= "Твой ID - ".$user_id.PHP_EOL;
+          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
 
-        $inline_keyboard = new InlineKeyboard(
-      		[new InlineKeyboardButton([
-      			'text'  => 'Hello',
-      			'callback_data'	=> 'get_hello:'
-      		])]
-    		);
+          $inline_keyboard = new InlineKeyboard(
+        		[new InlineKeyboardButton([
+        			'text'  => 'Hello',
+        			'callback_data'	=> 'get_hello:'
+        		])]
+      		);
 
-        $data = [
-          'chat_id' => $chat_id,
-          'text'    => $text,
-          'parse_mode'    => "HTML",
-		      'reply_markup' => $inline_keyboard,
-        ];
-        return Request::sendMessage($data);
+          $data = [
+            'chat_id' => $chat_id,
+            'text'    => $text,
+            'parse_mode'    => "HTML",
+  		      'reply_markup' => $inline_keyboard,
+          ];
+          return Request::sendMessage($data);
+        }
     }
 }
