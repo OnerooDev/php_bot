@@ -98,7 +98,7 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' => 'get_item'
             ]),
             new InlineKeyboardButton([
-              'text'  => '3logicWiki'
+              'text'  => '3logicWiki',
               'callback_data' => 'get_item'
             ]),
 //            new InlineKeyboardButton([
