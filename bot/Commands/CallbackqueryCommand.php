@@ -93,6 +93,9 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => 'Таблица',
               'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
             ]),
+            new InlineKeyboardButton([
+              'text'  => 'Задачи',
+            ]),
 //            new InlineKeyboardButton([
 //              'text'  => 'Item',
 //              'callback_data'	=> 'get_item:'
