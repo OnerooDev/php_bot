@@ -85,10 +85,10 @@ class CallbackqueryCommand extends SystemCommand
 
           $inline_keyboard = new InlineKeyboard();
           $inline_keyboard->addRow(
-            new InlineKeyboardButton([
-              'text'  => 'Чат',
-              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
-            ]),
+//            new InlineKeyboardButton([
+//              'text'  => 'Чат',
+//              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
+//            ]),
             new InlineKeyboardButton([
               'text'  => 'Таблица',
               'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
