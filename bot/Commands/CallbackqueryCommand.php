@@ -93,12 +93,16 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => 'Таблица',
               'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
             ]),
-            new InlineKeyboardButton<br>([
+            new InlineKeyboardButton([
               'text'  => 'Задачи',
               'callback_data' => 'get_item'
             ]),
             new InlineKeyboardButton([
               'text'  => '3logicWiki',
+              'callback_data' => 'get_item'
+            ]),
+            new InlineKeyboard([
+              'text'  => 'Test',
               'callback_data' => 'get_item'
             ]),
 //            new InlineKeyboardButton([
