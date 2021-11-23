@@ -100,7 +100,7 @@ class StartCommand extends SystemCommand
           $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
-        		[new InlineKeyboardButton([
+        		new InlineKeyboardButton([
         			'text'  => 'Hello',
         			'callback_data'	=> 'get_hello:'
         		])],
