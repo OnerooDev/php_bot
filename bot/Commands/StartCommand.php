@@ -101,7 +101,7 @@ class StartCommand extends SystemCommand
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
-        			'text'  => 'Hello',
+        			'text'  => 'Меню',
         			'callback_data'	=> 'get_hello:'
         		])],
             [new InlineKeyboardButton([
