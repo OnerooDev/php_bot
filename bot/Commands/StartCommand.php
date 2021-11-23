@@ -104,8 +104,8 @@ class StartCommand extends SystemCommand
         			'text'  => 'Hello',
         			'callback_data'	=> 'get_hello:'
         		])],
-            new InlineKeyboardButton([
-              'text'  =>  'Администратор'
+            [new InlineKeyboardButton([
+              'text'  =>  'Администратор',
               'callback_data' =>  'get_item'
             ])
       		);
