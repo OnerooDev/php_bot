@@ -83,8 +83,8 @@ class CallbackqueryCommand extends SystemCommand
         //
   				$text .= 'Ну привет '.$user_array['first_name'].PHP_EOL;
 
-          $inline_keyboard = new InlineKeyboard();
-          $inline_keyboard->addRow(
+          $inline_keyboard = new InlineKeyboard([
+//          $inline_keyboard->addRow(
 //            new InlineKeyboardButton([
 //              'text'  => 'Чат',
 //              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
@@ -92,8 +92,8 @@ class CallbackqueryCommand extends SystemCommand
             new InlineKeyboardButton([
               'text'  => 'Таблица',
               'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
-            ]),
-            new InlineKeyboardButton([
+            ])],
+            [new InlineKeyboardButton([
               'text'  => 'Задачи',
               'callback_data' => 'get_item'
             ]),
@@ -113,7 +113,7 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => 'Назад',
               'callback_data'	=> 'get_back:'
             ])
-          );
+          ]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
