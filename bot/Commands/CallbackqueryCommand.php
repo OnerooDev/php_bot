@@ -106,7 +106,7 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' => 'get_item'
             ]),
             new InlineKeyboardButton([
-              'text'  => 'Test',
+              'text'  => 'Контакты',
               'callback_data' => 'get_item'
             ])],
 //            new InlineKeyboardButton([
