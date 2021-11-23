@@ -140,12 +140,16 @@ class CallbackqueryCommand extends SystemCommand
           $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
           $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
 
-          $inline_keyboard = new InlineKeyboard(
-        		[new InlineKeyboardButton([
-        			'text'  => 'Hello',
+          $inline_keyboard = new InlineKeyboard([
+        		new InlineKeyboardButton([
+        			'text'  => 'Меню',
         			'callback_data'	=> 'get_hello:'
-        		])]
-      		);
+        		])],
+            [new InlineKeyboardButton([
+              'text'  =>  'Администратор',
+              'callback_data' =>  'get_item'
+            ])
+      		]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
