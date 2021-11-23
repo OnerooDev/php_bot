@@ -97,8 +97,6 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => 'Задачи',
               'callback_data' => 'get_item'
             ]),
-          );
-            $inline_keyboard->addRow(
             new InlineKeyboardButton([
               'text'  => '3logicWiki',
               'callback_data' => 'get_item'
