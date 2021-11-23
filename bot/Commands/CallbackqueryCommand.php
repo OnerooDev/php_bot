@@ -85,6 +85,10 @@ class CallbackqueryCommand extends SystemCommand
 
           $inline_keyboard = new InlineKeyboard([
 //          $inline_keyboard->addRow(
+            //Масив, пример $a = AddRow(1, 2, 3, 4, 5); print_f($a);
+            // будет отображена переменная а
+            //[1, 2, 3, 4, 5]
+
 //            new InlineKeyboardButton([
 //              'text'  => 'Чат',
 //              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
