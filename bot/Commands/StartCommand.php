@@ -108,7 +108,7 @@ class StartCommand extends SystemCommand
               'text'  =>  'Администратор',
               'callback_data' =>  'get_item'
             ])
-      		);
+      		]);
 
           $data = [
             'chat_id' => $chat_id,
