@@ -107,7 +107,7 @@ class CallbackqueryCommand extends SystemCommand
             ]),
             new InlineKeyboardButton([
               'text'  => 'Контакты',
-              'callback_data' => 'get_item'
+              'callback_data' => 'get_Contacts'
             ])],
 //            new InlineKeyboardButton([
 //              'text'  => 'Item',
@@ -150,6 +150,29 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' =>  'get_item'
             ])
       		]);
+          //get_Contacts
+                if($explode[0] == 'get_Contacts'){
+            //удаляем старое сообщение
+                   $message_to_edit = $message->getMessageId();
+                   $data_edit = [
+                      'chat_id'    => $chat_id,
+                      'message_id' => $message_to_edit,
+                    ];
+                    Request::deleteMessage($data_edit);
+                  //
+                    $text = "Контакты".PHP_EOL;
+                    $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+                    $inline_keyboard = new InlineKeyboard([
+                  		new InlineKeyboardButton([
+                  			'text'  => 'Инженерный отдел',
+                  			'callback_data'	=> 'get_Contacts:'
+                  		])],
+                      [new InlineKeyboardButton([
+                        'text'  =>  'Отдел Сборка',
+                        'callback_data' =>  'get_Contacts'
+                      ])
+                		]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
