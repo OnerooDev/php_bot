@@ -159,6 +159,7 @@ class CallbackqueryCommand extends SystemCommand
             return Request::sendMessage($datas);
         }
 //get_Contacts
+//Начало
       if($explode[0] == 'get_Contacts'){
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
@@ -185,6 +186,7 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' => 'get_back'
             ])
       		]);
+        //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
           $datas['chat_id'] = $chat_id;
@@ -192,6 +194,7 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
+//Конец
 //get_Worktable
       if($explode[0] == 'get_Worktable'){
   //удаляем старое сообщение
