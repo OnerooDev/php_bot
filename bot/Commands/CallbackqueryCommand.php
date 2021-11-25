@@ -185,6 +185,13 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' => 'get_back'
             ])
       		]);
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+      };
 //get_Worktable
       if($explode[0] == 'get_Worktable'){
   //удаляем старое сообщение
