@@ -158,7 +158,7 @@ class CallbackqueryCommand extends SystemCommand
 
             return Request::sendMessage($datas);
         }
-          //get_Contacts
+//get_Contacts
       if($explode[0] == 'get_Contacts'){
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
@@ -169,16 +169,47 @@ class CallbackqueryCommand extends SystemCommand
           Request::deleteMessage($data_edit);
         //
           $text = "Контакты".PHP_EOL;
-          $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+        //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Инженерный отдел',
-        			'callback_data'	=> 'get_hello:'
+        			'callback_data'	=> 'get_Contacts'
         		])],
             [new InlineKeyboardButton([
               'text'  =>  'Отдел Сборка',
               'callback_data' =>  'get_Contacts'
+            ]),
+            [new InlineKeyboardButton([
+              'text' => 'Назад',
+              'callback_data' => 'get_back'
+            ])
+      		]);
+//get_Worktable
+      if($explode[0] == 'get_Worktable'){
+  //удаляем старое сообщение
+         $message_to_edit = $message->getMessageId();
+         $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+        //
+          $text = "Таблица".PHP_EOL;
+        //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+          $inline_keyboard = new InlineKeyboard([
+        		new InlineKeyboardButton([
+        			'text'  => 'Google Таблица',
+        			'callback_data'	=> 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
+        		])],
+            [new InlineKeyboardButton([
+              'text'  =>  'Таблица бота',
+              'callback_data' =>  'get_Worktable'
+            ]),
+            [new InlineKeyboardButton([
+              'text' => 'Назад',
+              'callback_data' => 'get_back'
             ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
