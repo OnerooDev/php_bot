@@ -216,11 +216,11 @@ class CallbackqueryCommand extends SystemCommand
             [new InlineKeyboardButton([
               'text'  =>  'Таблица бота',
               'callback_data' =>  'get_Worktable'
-            ])],
-            [new InlineKeyboardButton([
-              'text' => 'Назад',
-              'callback_query' => 'get_back:'
             ])
+        //    [new InlineKeyboardButton([
+        //      'text' => 'Назад',
+        //      'callback_query' => 'get_back:'
+        //    ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
