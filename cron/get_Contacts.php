@@ -90,11 +90,15 @@ class ContactsCommand extends SystemCommand
         $inline_keyboard = new InlineKeyboard([
           new InlineKeyboardButton([
             'text'  => 'Инженерный отдел',
-            'callback_data'	=> 'get_hello:'
+            'callback_data'	=> 'get_item:'
           ])],
           [new InlineKeyboardButton([
             'text'  =>  'Отдел Сборка',
             'callback_data' =>  'get_item'
+          ])],
+          [new InlineKeyboardButton([
+            'text'  =>  'Назад',
+            'callback_data' =>  'get_back:'
           ])
         ]);
 
