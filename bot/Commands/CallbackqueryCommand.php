@@ -166,7 +166,7 @@ class CallbackqueryCommand extends SystemCommand
                     $inline_keyboard = new InlineKeyboard([
                   		new InlineKeyboardButton([
                   			'text'  => 'Инженерный отдел',
-                  			'callback_data'	=> 'get_hello:'
+                  			'callback_data'	=> 'get_Contacts:'
                   		])],
                       [new InlineKeyboardButton([
                         'text'  =>  'Отдел Сборка',
