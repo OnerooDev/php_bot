@@ -95,7 +95,7 @@ class CallbackqueryCommand extends SystemCommand
 //            ]),
             new InlineKeyboardButton([
               'text'  => 'Таблица',
-              'url'     => 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
+              'callback_data'     => 'get_Worktable'
             ])],
             [new InlineKeyboardButton([
               'text'  => 'Задачи',
@@ -180,10 +180,10 @@ class CallbackqueryCommand extends SystemCommand
             [new InlineKeyboardButton([
               'text'  =>  'Отдел Сборка',
               'callback_data' =>  'get_Contacts'
-            ]),
+            ])],
             [new InlineKeyboardButton([
               'text' => 'Назад',
-              'callback_data' => 'get_back'
+              'callback_data' => 'get_back:'
             ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
@@ -211,15 +211,15 @@ class CallbackqueryCommand extends SystemCommand
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Google Таблица',
-        			'callback_data'	=> 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
+        			'callback_data'	=> 'get_Worktable'
         		])],
             [new InlineKeyboardButton([
               'text'  =>  'Таблица бота',
               'callback_data' =>  'get_Worktable'
-            ]),
+            ])],
             [new InlineKeyboardButton([
               'text' => 'Назад',
-              'callback_data' => 'get_back'
+              'callback_data' => 'get_back:'
             ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
@@ -229,7 +229,7 @@ class CallbackqueryCommand extends SystemCommand
           $datas['reply_markup'] = $inline_keyboard;
 
           return Request::sendMessage($datas);
-      }
+      };
 
       $data = [
   			'chat_id'      => $chat_id,
