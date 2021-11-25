@@ -211,16 +211,16 @@ class CallbackqueryCommand extends SystemCommand
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Google Таблица',
-        			'callback_data'	=> 'get_Worktable'
+        			'url'	=> 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
         		])],
             [new InlineKeyboardButton([
               'text'  =>  'Таблица бота',
               'callback_data' =>  'get_Worktable'
+            ])],
+            [new InlineKeyboardButton([
+              'text' => 'Назад',
+              'callback_query' => 'get_back:'
             ])
-        //    [new InlineKeyboardButton([
-        //      'text' => 'Назад',
-        //      'callback_query' => 'get_back:'
-        //    ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
