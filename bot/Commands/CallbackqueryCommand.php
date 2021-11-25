@@ -183,7 +183,7 @@ class CallbackqueryCommand extends SystemCommand
             ])],
             [new InlineKeyboardButton([
               'text' => 'Назад',
-              'callback_data' => 'get_back:'
+              'callback_data' => 'get_hello:'
             ])
       		]);
         //вносим необходимые данные в массив отправляемого сообщения
