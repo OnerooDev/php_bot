@@ -103,7 +103,7 @@ class CallbackqueryCommand extends SystemCommand
             ]),
             new InlineKeyboardButton([
               'text'  => '3logicWiki',
-              'callback_data' => 'get_item'
+              'callback_data' => 'get_3lWiki'
             ]),
             new InlineKeyboardButton([
               'text'  => 'Контакты',
@@ -196,6 +196,7 @@ class CallbackqueryCommand extends SystemCommand
       };
 //Конец
 //get_Worktable
+//Начало
       if($explode[0] == 'get_Worktable'){
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
@@ -222,6 +223,7 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' => 'get_hello:'
             ])
       		]);
+
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
@@ -230,7 +232,45 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
+//Конец
+//get_3lWiki
+//Начало
+      if($explode[0] == 'get_3lWiki'){
+  //удаляем старое сообщение
+         $message_to_edit = $message->getMessageId();
+         $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+        //
+          $text = "3logicWiki".PHP_EOL;
+        //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
 
+          $inline_keyboard = new InlineKeyboard([
+        		new InlineKeyboardButton([
+        			'text'  => '3logicWiki',
+        			'callback_data'	=> 'get_3lWiki'
+        		])],
+/**            [new InlineKeyboardButton([
+*              'text'  =>  '',
+*              'callback_data' =>  ''
+*            ])],
+*/            [new InlineKeyboardButton([
+              'text' => 'Назад',
+              'callback_data' => 'get_hello:'
+            ])
+      		]);
+
+        //вносим необходимые данные в массив отправляемого сообщения
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+      };
+//Конец
       $data = [
   			'chat_id'      => $chat_id,
   			'parse_mode'   => 'MARKDOWN',
