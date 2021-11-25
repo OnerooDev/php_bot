@@ -1,25 +1,112 @@
 <?php
-$a = [ ["Александр Энгельс", "Начальник", "+79037218853", "3lengels@gmail.com", "15.07.1980"],
-  ["Денис Зацепин", "Инженер тех. отдела", "+79663290880", "liextrime007@gmail.com", "05.08.1987"],
-  ["Данила Морковин", "Ниженер тех. отдела", "+79150953319", "danila_25@mail.ru",   "13.06.1984"],
-  ["Артем Потапов", "Ниженер тех. отдела",  "+79999094198", "temich12107@gmail.com",  "10.07.1998"],
-  ["Антон Лукашин", "Ниженер тех. отдела", "+79017455759",  "antlukashin6@gmail.com",  "06.11.1980"],
-  ["Владимир Гамза",  "Сервис инженер", "+79265672027", "superhanzzzs@gmail.com", "14.02.1989"],
-  ["Евгений Харламов",  "Сервис инженер", "+79105174362", "eugenkharn@gmail.com", "18.12.1991"],
-  ["Кирилл Тищенко",  "Сервис инженер", "+79851702610", "gaartvk@gmail.com",  "0.0.0"],
-  ["Ларгун Сафи", "Сервис инженер", "+79670188238", "largunsafi@gmail.com", "12.01.1982"],
-  ["Сергей Москаленко", "Старший сборки", "+79261872325", "plashfish@mail.ru",  "17.11.1986"],
-  ["Сергей Шевченко", "Сборщик",  "+79652263445", "qoor95@gmail.com", "25.10.1995"],
-  ["Никита Цветков",  "Сборщик",  "+79622180900", "troyan.com@gmail.com", "troyan.com@gmail.com", "18.12.1987"],
-  ["Александр Цыганков", "Сборщик", "+79262999212", "prolapse.wins@gmail.com",  "29.07.1989"],
-  ["Николай Аникеиевич",  "Сборщик",  "+79686254780", "doors12345@mail.ru", "01.12.1985"],
-  ["Максим Бойков", "Сборщик",  "+79175091980", "nicrasoft@ya.ru",  "20.07.1980"],
-  ["Илья Трубицын", "Сборщик",  "+79162592370", "melith@yandex.ru", "11.09.1975"],
-  ["Дмитрий Мамонтов" "Помошник сборщика", "+79660288536",  "mamontovd740@gmail.com", "29.12.1998"],
-  ["Николай Башвеев", "Помошник сборщика",  "+79309448841", "orexov88.ru@gmail.com",  "02.09.1998"],
-]
 
-foreach ($a as &$value) {
-  $value = $a;
+namespace Longman\TelegramBot\Commands\SystemCommands;
 
+use Longman\TelegramBot\Commands\SystemCommand;
+use Longman\TelegramBot\Contacts;
+use Longman\TelegramBot\Conversation;
+use Longman\TelegramBot\Entities\Keyboard;
+use Longman\TelegramBot\Request;
+use Longman\TelegramBot\Entities\InlineKeyboard;
+use Longman\TelegramBot\Entities\InlineKeyboardButton;
+
+require_once "../lib/config_class.php";
+
+class ContactsCommand extends SystemCommand
+{
+  /**
+   * @var string
+   */
+  protected $name = 'contacts';
+
+  /**
+   * @var string
+   */
+  protected $description = 'Команда контакты';
+
+  /**
+   * @var string
+   */
+  protected $usage = '/contacts';
+
+   /**
+   * @var string
+   */
+  protected $version = '1.1.0';
+
+   /**
+   * @var bool
+   */
+  protected $need_mysql = true;
+
+  /**
+   * @var bool
+   */
+    protected $private_only = false;
+//    protected $private_only = true;
+
+  /**
+   * Conversation Object
+   *
+   * @var \Longman\TelegramBot\Conversation
+   */
+  protected $conversation;
+
+  /**
+   * Command execute method
+   *
+   * @return \Longman\TelegramBot\Entities\ServerResponse
+   * @throws \Longman\TelegramBot\Exception\TelegramException
+   */
+  public function execute()
+  {
+      $message = $this->getMessage();
+
+      $chat    = $message->getChat();
+      $user    = $message->getFrom();
+      $text    = trim($message->getText(true));
+      $chat_id = $chat->getId();
+      $user_id = $user->getId();
+
+      $this->config = new \Config();
+
+      $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
+      $mysqli->query("SET NAMES 'utf8'");
+
+// Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
+      if ($user_id) {//If ($user_id == "712276763")
+        //Conversation start
+        $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
+        $this->conversation->stop();
+
+        if(isset($user->first_name) && !empty($user->first_name)) $name = $user->first_name;
+        else $name = $user->username;
+
+        $text = "Контакты".PHP_EOL;
+        $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+        $text .= "Твой ID - ".$user_id.PHP_EOL;
+        $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
+
+        $inline_keyboard = new InlineKeyboard([
+          new InlineKeyboardButton([
+            'text'  => 'Инженерный отдел',
+            'callback_data'	=> 'get_hello:'
+          ])],
+          [new InlineKeyboardButton([
+            'text'  =>  'Отдел Сборка',
+            'callback_data' =>  'get_item'
+          ])
+        ]);
+
+        $data = [
+          'chat_id' => $chat_id,
+          'text'    => $text,
+          'parse_mode'    => "HTML",
+          'reply_markup' => $inline_keyboard,
+        ];
+        return Request::sendMessage($data);
+      }
+  }
 }
+
+?>
