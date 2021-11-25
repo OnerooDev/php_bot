@@ -150,29 +150,38 @@ class CallbackqueryCommand extends SystemCommand
               'callback_data' =>  'get_item'
             ])
       		]);
-          //get_Contacts
-                if($explode[0] == 'get_Contacts'){
-            //удаляем старое сообщение
-                   $message_to_edit = $message->getMessageId();
-                   $data_edit = [
-                      'chat_id'    => $chat_id,
-                      'message_id' => $message_to_edit,
-                    ];
-                    Request::deleteMessage($data_edit);
-                  //
-                    $text = "Контакты".PHP_EOL;
-                    $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+        //вносим необходимые данные в массив отправляемого сообщения
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
 
-                    $inline_keyboard = new InlineKeyboard([
-                  		new InlineKeyboardButton([
-                  			'text'  => 'Инженерный отдел',
-                  			'callback_data'	=> 'get_hello:'
-                  		])],
-                      [new InlineKeyboardButton([
-                        'text'  =>  'Отдел Сборка',
-                        'callback_data' =>  'get_Contacts'
-                      ])
-                		]);
+          return Request::sendMessage($datas);
+      }
+
+//get_Contacts
+      if($explode[0] == 'get_Contacts'){
+  //удаляем старое сообщение
+         $message_to_edit = $message->getMessageId();
+         $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+        //
+          $text = "Контакты".PHP_EOL;
+          $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+          $inline_keyboard = new InlineKeyboard([
+        		new InlineKeyboardButton([
+        			'text'  => 'Инженерный отдел',
+        			'callback_data'	=> 'get_hello:'
+        		])],
+            [new InlineKeyboardButton([
+              'text'  =>  'Отдел Сборка',
+              'callback_data' =>  'get_Contacts'
+            ])
+      		]);
         //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
