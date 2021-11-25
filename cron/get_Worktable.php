@@ -98,7 +98,7 @@ class ContactsCommand extends SystemCommand
           ])],
           [new InlineKeyboardButton([
             'text'  =>  'Назад',
-            'callback_data' =>  'get_back:'
+            'callback_query' =>  'get_back:'
           ])
         ]);
 
