@@ -164,7 +164,7 @@ class CallbackqueryCommand extends SystemCommand
       if($explode[0] == 'get_Contacts'){
         $query = "SELECT * FROM `Contacts`";
         $all_contacts = $mysqli->query($query);
-        $user_array = $all_contacts->fetch_array();
+        $contacts_array = $all_contacts->fetch_array();
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
          $data_edit = [
@@ -173,7 +173,7 @@ class CallbackqueryCommand extends SystemCommand
           ];
           Request::deleteMessage($data_edit);
         //
-          $text = "Контакты".PHP_EOL;
+          $text = 'Контакты'.$contacts_array['name'].PHP_EOL;
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
