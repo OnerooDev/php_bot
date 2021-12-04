@@ -173,8 +173,12 @@ class CallbackqueryCommand extends SystemCommand
           ];
           Request::deleteMessage($data_edit);
         //
-          $text = 'Контакты'.$contacts_array['name', 'position', 'number', 'email', 'birthday'.].PHP_EOL;
+          $text = "Контакты".PHP_EOL;
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+        foreach ($all_contacts as $value) {
+        $text .= $value ['name'].PHP_EOL;
+        }
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
