@@ -89,10 +89,10 @@ class CallbackqueryCommand extends SystemCommand
             // будет отображена переменная а
             //[1, 2, 3, 4, 5]
 
-//            new InlineKeyboardButton([
-//              'text'  => 'Чат',
-//              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
-//            ]),
+/**            new InlineKeyboardButton([
+*              'text'  => 'Чат',
+*              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
+*/            ]),
             new InlineKeyboardButton([
               'text'  => 'Таблица',
               'callback_data'     => 'get_Worktable'
