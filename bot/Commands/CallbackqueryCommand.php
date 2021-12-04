@@ -93,7 +93,8 @@ class CallbackqueryCommand extends SystemCommand
 *              'text'  => 'Чат',
 *              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
 *            ]),
-*/            new InlineKeyboardButton([
+*/
+            new InlineKeyboardButton([
               'text'  => 'Таблица',
               'callback_data'     => 'get_Worktable'
             ])],
@@ -161,9 +162,9 @@ class CallbackqueryCommand extends SystemCommand
 //get_Contacts
 //Начало
       if($explode[0] == 'get_Contacts'){
-        $query = "SELECT * FROM `Contacts` WHERE `id` = '".$user_id."'";
-        $user_query = $mysqli->query($query);
-        $user_array = $user_query->fetch_array();
+        $query = "SELECT * FROM `Contacts`";
+        $all_contacts = $mysqli->query($query);
+        $user_array = $all_contacts->fetch_array();
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
          $data_edit = [
