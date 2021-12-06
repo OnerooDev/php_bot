@@ -178,8 +178,8 @@ class CallbackqueryCommand extends SystemCommand
 
         foreach ($all_contacts as $value) {
         $text .= $value ['name'] ."\n"
-        ."Должность" .$value ['position']
-        /**."Номер". $value ['number']*/
+        ."Должность:" .$value ['position'] ."\n"
+        ."Номер". $value ['number'] ."\n"
         .PHP_EOL;
         }
 
