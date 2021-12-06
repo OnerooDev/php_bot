@@ -227,7 +227,7 @@ class CallbackqueryCommand extends SystemCommand
 
         foreach ($all_worktable as $value) {
         $text .=
-        ."Дата поездки:" ." " .$value ['Travel_date'] ."\n"
+        "Дата поездки:" ." " .$value ['Travel_date'] ."\n"
         ."Наиминование Заказчика:" ." " .$value ['Customer_name'] ."\n"
         ."Адрес Заказчика:" ." " .$value ['Customer_address'] ."\n"
         ."Контакты Заказчика:" ." " .$vaule ['Customer_contacts'] ."\n"
