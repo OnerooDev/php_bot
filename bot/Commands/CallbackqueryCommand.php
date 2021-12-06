@@ -181,7 +181,7 @@ class CallbackqueryCommand extends SystemCommand
         ."Должность:" ." " .$value ['position'] ."\n"
         ."Номер:" ." " .$value ['number'] ."\n"
         ."Почта:" ." " .$vaule ['email'] ."\n"
-        /**."День Рождения:" ." " .$value ['birthday'] ."\n"*/
+        ."День Рождения:" ." " .$value ['birthday'] ."\n"
         .PHP_EOL;
         }
 
