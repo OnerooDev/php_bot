@@ -178,8 +178,8 @@ class CallbackqueryCommand extends SystemCommand
 
         foreach ($all_contacts as $value) {
         $text .= $value ['name']
-        "Должность" .$value ['position']
-        "Номер". $value ['number'] .PHP_EOL;
+        ."Должность" .$value ['position']
+        ."Номер". $value ['number'] .PHP_EOL;
         }
 
           $inline_keyboard = new InlineKeyboard([
