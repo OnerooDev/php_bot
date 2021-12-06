@@ -244,7 +244,7 @@ class CallbackqueryCommand extends SystemCommand
         			'url'	=> 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
         		])],
             [new InlineKeyboardButton([
-              'text'  =>  'Таблица бота',
+              'text'  =>  'Редактировать',
               'callback_data' =>  'get_Worktable'
             ])],
             [new InlineKeyboardButton([
