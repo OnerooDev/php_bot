@@ -211,6 +211,9 @@ class CallbackqueryCommand extends SystemCommand
 //get_Worktable
 //Начало
       if($explode[0] == 'get_Worktable'){
+        $query = "SELECT * FROM `Worktable`";
+        $all_worktable = $mysqli->query($query);
+        $worktable_array = $all_worktable->fetch_array();
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
          $data_edit = [
@@ -221,6 +224,19 @@ class CallbackqueryCommand extends SystemCommand
         //
           $text = "Таблица".PHP_EOL;
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+        foreach ($all_worktable as $value) {
+        $text .=
+        $value ['Travel_date'] ."\n"
+        ."Наиминование Заказчика:" ." " .$value ['Customer_name'] ."\n"
+        ."Адрес Заказчика:" ." " .$value ['Customer_address'] ."\n"
+        ."Контакты Заказчика:" ." " .$vaule ['Customer_contacts'] ."\n"
+        ."Цель поездки или номер инцидента:" ." " .$value ['Purpose_of_trip_or_incident_number'] ."\n"
+        ."Наиминование и S/N оборудования:" ." " .$value ['Equipment_name_and_S/N'] ."\n"
+        ."Количество:" ." " .$value ['Quantity'] ."\n"
+        ."ФИО инженера:" ." " .$value ['Full_name_of_engineer'] ."\n"
+        .PHP_EOL;
+        }
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
