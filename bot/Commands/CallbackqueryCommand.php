@@ -180,7 +180,8 @@ class CallbackqueryCommand extends SystemCommand
         $text .= $value ['name'] ."\n"
         ."Должность:" .$value ['position'] ."\n"
         ."Номер:". $value ['number'] ."\n"
-        . "День Рождения:" .$value ['birthday'] ."\n" 
+        ."Почта:" .$vaule ['email'] ."\n"
+        ."День Рождения:" .$value ['birthday'] ."\n"
         .PHP_EOL;
         }
 
