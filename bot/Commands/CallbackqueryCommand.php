@@ -177,7 +177,7 @@ class CallbackqueryCommand extends SystemCommand
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
 
         foreach ($all_contacts as $value) {
-        $text .= $value ['name'] "\n";
+        $text .= $value ['name'] "\n"
         ."Должность" .$value ['position']
         /**."Номер". $value ['number']*/
         .PHP_EOL;
