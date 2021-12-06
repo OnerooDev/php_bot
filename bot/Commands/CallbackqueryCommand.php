@@ -222,12 +222,12 @@ class CallbackqueryCommand extends SystemCommand
           ];
           Request::deleteMessage($data_edit);
         //
-          $text = "Таблица".PHP_EOL;
+          $text = "Таблица:".PHP_EOL;
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
 
         foreach ($all_worktable as $value) {
         $text .=
-        $value ['Travel_date'] ."\n"
+        ."Дата поездки:" ." " .$value ['Travel_date'] ."\n"
         ."Наиминование Заказчика:" ." " .$value ['Customer_name'] ."\n"
         ."Адрес Заказчика:" ." " .$value ['Customer_address'] ."\n"
         ."Контакты Заказчика:" ." " .$vaule ['Customer_contacts'] ."\n"
