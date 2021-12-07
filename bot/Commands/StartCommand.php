@@ -79,6 +79,7 @@ class StartCommand extends SystemCommand
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
+        $tg_id   = $user_id;
 
 		    $this->config = new \Config();
 
@@ -86,6 +87,7 @@ class StartCommand extends SystemCommand
         $mysqli->query("SET NAMES 'utf8'");
 
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
+          if ($tg_id) {IF ($tg_id = ();
 //        if ($user_id) {//If ($user_id == "712276763")
           //Conversation start
           $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
@@ -96,9 +98,9 @@ class StartCommand extends SystemCommand
 
           $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
           $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
-/**          $text .= "Твой ID - ".$user_id.PHP_EOL;
-*          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
-*/
+          $text .= "Твой ID - ".$user_id.PHP_EOL;
+          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
+
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Меню',
