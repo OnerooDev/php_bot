@@ -110,6 +110,10 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => 'Контакты',
               'callback_data' => 'get_Contacts'
             ])],
+            new InlineKeyboardButton([
+              'text'  => 'Отпуска',
+              'callback_data'     => 'get_Holidays'
+            ])],
 //            new InlineKeyboardButton([
 //              'text'  => 'Item',
 //              'callback_data'	=> 'get_item:'
@@ -285,7 +289,42 @@ class CallbackqueryCommand extends SystemCommand
 *              'text'  =>  '',
 *              'callback_data' =>  ''
 *            ])],
-*/            [new InlineKeyboardButton([
+*/
+//get_Holidays
+//Начало
+      if($explode[0] == 'get_Holidays'){
+        $query = "SELECT * FROM `Holidays`";
+        $all_contacts = $mysqli->query($query);
+        $contacts_array = $all_contacts->fetch_array();
+  //удаляем старое сообщение
+         $message_to_edit = $message->getMessageId();
+         $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+        //
+          $text = "Отпуска:".PHP_EOL;
+        //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+        foreach ($all_contacts as $value) {
+        $text .= $value ['name'] ."\n".PHP_EOL;
+        }
+          $inline_keyboard = new InlineKeyboard([
+            new InlineKeyboardButton([
+              'text' => 'Назад',
+              'callback_data' => 'get_hello:'
+            ])
+      		]);
+        //вносим необходимые данные в массив отправляемого сообщения
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+      };
+//Конец
+            [new InlineKeyboardButton([
               'text' => 'Назад',
               'callback_data' => 'get_hello:'
             ])
