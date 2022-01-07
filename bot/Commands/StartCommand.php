@@ -87,7 +87,7 @@ class StartCommand extends SystemCommand
         $mysqli->query("SET NAMES 'utf8'");
 
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
-        if ($user_id) {If ($user_id == "712276763", "1559708885" )
+        if ($user_id) {If ($user_id == "1559708885" )
 
 
 
