@@ -104,12 +104,11 @@ class StartCommand extends SystemCommand
         		new InlineKeyboardButton([
         			'text'  => 'Меню',
         			'callback_data'	=> 'get_hello:'
-        		])],
-            [new InlineKeyboardButton([
-              'text'  =>  'Администратор',
-              'callback_data' =>  'get_item'
-            ])
-      		]);
+/**        		])],
+*            [new InlineKeyboardButton([
+*              'text'  =>  'Администратор',
+*              'callback_data' =>  'get_item'
+*/            ])
 
           $data = [
             'chat_id' => $chat_id,
