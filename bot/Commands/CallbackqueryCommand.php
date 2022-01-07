@@ -145,12 +145,12 @@ class CallbackqueryCommand extends SystemCommand
         		new InlineKeyboardButton([
         			'text'  => 'Меню',
         			'callback_data'	=> 'get_hello:'
-        		])],
-            [new InlineKeyboardButton([
-              'text'  =>  'Администратор',
-              'callback_data' =>  'get_item'
-            ])
-      		]);
+/**        		])],
+*            [new InlineKeyboardButton([
+*              'text'  =>  'Администратор',
+*              'callback_data' =>  'get_item'
+*            ])
+**/      		])]);
           //вносим необходимые данные в массив отправляемого сообщения
             $datas['text'] = $text;
             $datas['parse_mode'] = "MARKDOWN";
