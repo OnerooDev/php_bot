@@ -77,6 +77,7 @@ class StartCommand extends SystemCommand
         $chat    = $message->getChat();
         $user    = $message->getFrom();
         $text    = trim($message->getText(true));
+        $t_id    = $id->getid();
         $chat_id = $chat->getId();
         $user_id = $user->getId();
 
@@ -87,7 +88,7 @@ class StartCommand extends SystemCommand
         $mysqli->query("SET NAMES 'utf8'");
 
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
-        if ($user_id) {If ($user_id == "$t_id")
+        if ($user_id) {If ($user_id == $t_id)
 
 
 
