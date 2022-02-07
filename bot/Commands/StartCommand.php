@@ -89,7 +89,7 @@ class StartCommand extends SystemCommand
 //        if ($user_id) {If ($user_id == "712276763" )
 
           $query = "SELECT * FROM `Contacts` where `id_user` = `id`";
-          if ($user_id) {If ($user_id == "$Contacts" )
+          if ($user_id) {If ($user_id == $Contacts )
 
 
           //Conversation start
