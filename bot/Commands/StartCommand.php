@@ -75,10 +75,11 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat    = $message->getChat();
-        $user    = $messagewhere id_user = id ->getFrom();
+        $user    = $message->getFrom();
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
+        $Contacts = $user->getId();
 
 		    $this->config = new \Config();
 
@@ -89,7 +90,7 @@ class StartCommand extends SystemCommand
 //        if ($user_id) {If ($user_id == "712276763" )
 
           $query = "SELECT * FROM `Contacts` where `id_user` = `id`";
-          if ($user_id) {If ($user_id == $Contacts )
+          if ($user_id) {If ($user_id = $Contacts )
 
 
           //Conversation start
