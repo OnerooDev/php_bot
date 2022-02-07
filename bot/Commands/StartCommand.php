@@ -75,11 +75,11 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat    = $message->getChat();
-        $user    = $message->getFrom();
+        $user    = $messagewhere id_user = id ->getFrom();
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
-
+        $Contacts = $tg_id->getId();
 
 		    $this->config = new \Config();
 
@@ -88,6 +88,8 @@ class StartCommand extends SystemCommand
 
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
 //        if ($user_id) {If ($user_id == "712276763" )
+
+          $query = "SELECT * FROM `Contacts` where `id_user` = `id`";
           if ($user_id) {If ($user_id == "$Contacts" )
 
 
