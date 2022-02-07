@@ -98,9 +98,9 @@ class StartCommand extends SystemCommand
 
           $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
           $text .= "<b>✅Сделайте выбор в меню✅</b>".PHP_EOL;
-          $text .= "Твой ID - ".$user_id.PHP_EOL;
-          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
-
+/**          $text .= "Твой ID - ".$user_id.PHP_EOL;
+*          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
+**/
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Меню',
@@ -109,7 +109,7 @@ class StartCommand extends SystemCommand
           $data = [
             'chat_id' => $chat_id,
             'text'    => $text,
-            'parse_mode'    => "HTML",
+//            'parse_mode'    => "HTML",
   		      'reply_markup' => $inline_keyboard,
           ];
           return Request::sendMessage($data);
