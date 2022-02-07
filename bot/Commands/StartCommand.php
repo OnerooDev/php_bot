@@ -79,7 +79,6 @@ class StartCommand extends SystemCommand
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
-        $Contacts = $tg_id->getId();
 
 		    $this->config = new \Config();
 
