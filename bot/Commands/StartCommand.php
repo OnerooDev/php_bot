@@ -84,10 +84,11 @@ class StartCommand extends SystemCommand
 
 		    $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
         $mysqli->query("SET NAMES 'utf8'");
-//        $query = "SELECT * FROM `Contacts` where `id_user` = `id`";
+        $query = "SELECT * FROM `Contacts` where `id_user` = `id`";
 
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
         if ($user_id) {If ($user_id == "712276763" )
+//          if ($user_id) {If ($user_id = $Contacts)
 
           //Conversation start
           $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
@@ -98,7 +99,7 @@ class StartCommand extends SystemCommand
 
           $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
           $text .= "✅Сделайте выбор в меню✅".PHP_EOL;
-/**          $text .= "<b>✅Сделайте выбор в меню✅</b>".PHP_EOL;
+/**          $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
 *          $text .= "Твой ID - ".$user_id.PHP_EOL;
 *          $text .= "Твой ID(удобно копировать обернул в html тег) - <code>".$user_id."</code>".PHP_EOL;
 **/
