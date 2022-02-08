@@ -84,7 +84,7 @@ class StartCommand extends SystemCommand
 
 		    $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
         $mysqli->query("SET NAMES 'utf8'");
-        if ($user_id) {If ($query = "SELECT * FROM `Contacts` where `t_id` = `id`";)
+        if ($user_id) {If ($query = "SELECT * FROM `Contacts` where `t_id` == `$user_id`";)
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
 //          if ($user_id) {If ($user_id = $Contacts)
 
