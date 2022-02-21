@@ -88,9 +88,10 @@ class StartCommand extends SystemCommand
 // Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
 //          if ($user_id) {If ($user_id ==)
 
+
         $query = "SELECT * FROM `Contacts` WHERE `t_id` = '".$user_id."'";
         $answer = $mysqli->query($query);
-        if ($user_id) {If ($user_id = 't_id')
+        if ($answer != false) {
 
 
           //Conversation start
