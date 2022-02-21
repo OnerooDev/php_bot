@@ -159,8 +159,7 @@ class CallbackqueryCommand extends SystemCommand
 
             return Request::sendMessage($datas);
         }
-//get_Contacts
-//Начало
+//get_Contacts Начало
       if($explode[0] == 'get_Contacts'){
         $query = "SELECT * FROM `Contacts`";
         $all_contacts = $mysqli->query($query);
@@ -207,9 +206,9 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//Конец
-//get_Worktable
-//Начало
+//get_Contacts Конец
+
+//get_Worktable Начало
       if($explode[0] == 'get_Worktable'){
         $query = "SELECT * FROM `Worktable`";
         $all_worktable = $mysqli->query($query);
