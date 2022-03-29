@@ -95,19 +95,19 @@ class CallbackqueryCommand extends SystemCommand
 *            ]),
 */
             new InlineKeyboardButton([
-              'text'  => 'Таблица',
+              'text'  => '🗓Таблица',
               'callback_data'     => 'get_Worktable'
             ])],
             [new InlineKeyboardButton([
-              'text'  => 'Задачи',
+              'text'  => '📋Задачи',
               'callback_data' => 'get_item'
             ]),
             new InlineKeyboardButton([
-              'text'  => '3logicWiki',
-              'callback_data' => 'get_3lWiki'
+              'text'  => '📄3logicWiki',
+              'url' => 'http://wiki.3l.host'
             ]),
             new InlineKeyboardButton([
-              'text'  => 'Контакты',
+              'text'  => '☎️Контакты',
               'callback_data' => 'get_Contacts'
             ])],
 //            new InlineKeyboardButton([
@@ -115,7 +115,7 @@ class CallbackqueryCommand extends SystemCommand
 //              'callback_data'	=> 'get_item:'
 //            ]),
             [new InlineKeyboardButton([
-              'text'  => 'Назад',
+              'text'  => '↩️Назад',
               'callback_data'	=> 'get_back:'
             ])
           ]);
@@ -139,7 +139,7 @@ class CallbackqueryCommand extends SystemCommand
   				Request::deleteMessage($data_edit);
         //
           $text = "Добро пожаловать в бота 3Logic ".PHP_EOL;
-          $text .= "<b>Сделайте выбор в меню</b>".PHP_EOL;
+          $text .= "✅Сделайте выбор в меню✅".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
