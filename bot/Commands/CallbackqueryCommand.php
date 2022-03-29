@@ -321,11 +321,11 @@ class CallbackqueryCommand extends SystemCommand
             [new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Сегодня',
               'callback_data' =>  'get_Task'
-            ])],
+            ]),
             [new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Все',
               'callback_data' =>  'get_Task'
-            ])],
+            ]),
 /*            new InlineKeyboardButton([
 *              'text'  =>  '',
 *              'callback_data' =>  'get_Task'
