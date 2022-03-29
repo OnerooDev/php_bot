@@ -72,7 +72,7 @@ class StartCommand extends SystemCommand
      */
     public function execute()
     {
-        $message = $this->getMessage();
+        $message = $this->getMessage($answer);
 
         $chat    = $message->getChat();
         $user    = $message->getFrom();
