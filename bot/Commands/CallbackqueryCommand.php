@@ -223,30 +223,30 @@ class CallbackqueryCommand extends SystemCommand
         //
           $text = "Таблица:".PHP_EOL;
         //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
-
-        foreach ($all_worktable as $value) {
-        $text .=
-        "Дата поездки:" ." " .$value ['Travel_date'] ."\n"
-        ."Наиминование Заказчика:" ." " .$value ['Customer_name'] ."\n"
-        ."Адрес Заказчика:" ." " .$value ['Customer_address'] ."\n"
-        ."Контакты Заказчика:" ." " .$vaule ['Customer_contacts'] ."\n"
-        ."Цель поездки или номер инцидента:" ." " .$value ['Purpose_of_trip_or_incident_number'] ."\n"
-        ."Наиминование и S/N оборудования:" ." " .$value ['Equipment_name_and_S/N'] ."\n"
-        ."Количество:" ." " .$value ['Quantity'] ."\n"
-        ."ФИО инженера:" ." " .$value ['Full_name_of_engineer'] ."\n"
-        .PHP_EOL;
-        }
-
+/**
+*        foreach ($all_worktable as $value) {
+*        $text .=
+*        "Дата поездки:" ." " .$value ['Travel_date'] ."\n"
+*        ."Наиминование Заказчика:" ." " .$value ['Customer_name'] ."\n"
+*        ."Адрес Заказчика:" ." " .$value ['Customer_address'] ."\n"
+*        ."Контакты Заказчика:" ." " .$vaule ['Customer_contacts'] ."\n"
+*        ."Цель поездки или номер инцидента:" ." " .$value ['Purpose_of_trip_or_incident_number'] ."\n"
+*        ."Наиминование и S/N оборудования:" ." " .$value ['Equipment_name_and_S/N'] ."\n"
+*        ."Количество:" ." " .$value ['Quantity'] ."\n"
+*        ."ФИО инженера:" ." " .$value ['Full_name_of_engineer'] ."\n"
+*        .PHP_EOL;
+*        }
+*/
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => 'Google Таблица',
         			'url'	=> 'https://docs.google.com/spreadsheets/d/1wQItHbu8jINUPGAiNtZ5nesTaftEL3elmEfKXE5-M8w/edit?usp=sharing'
         		])],
-            [new InlineKeyboardButton([
-              'text'  =>  'Редактировать',
-              'callback_data' =>  'get_Worktable'
-            ])],
-            [new InlineKeyboardButton([
+/**            [new InlineKeyboardButton([
+*              'text'  =>  'Редактировать',
+*              'callback_data' =>  'get_Worktable'
+*            ])],
+*/            [new InlineKeyboardButton([
               'text' => 'Назад',
               'callback_data' => 'get_hello:'
             ])
