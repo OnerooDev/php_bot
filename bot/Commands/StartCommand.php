@@ -75,7 +75,7 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat    = $message->getChat($answer);
-        $user    = $message->getFrom($answer);
+        $user    = $message->getFrom();
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
