@@ -194,7 +194,7 @@ class CallbackqueryCommand extends SystemCommand
 *              'callback_data' =>  'get_Contacts'
 *            ])],
 */            new InlineKeyboardButton([
-              'text' => 'Назад',
+              'text' => '↩️Назад',
               'callback_data' => 'get_hello:'
             ])
       		]);
@@ -247,7 +247,7 @@ class CallbackqueryCommand extends SystemCommand
 *              'callback_data' =>  'get_Worktable'
 *            ])],
 */            [new InlineKeyboardButton([
-              'text' => 'Назад',
+              'text' => '↩️Назад',
               'callback_data' => 'get_hello:'
             ])
       		]);
@@ -285,7 +285,7 @@ class CallbackqueryCommand extends SystemCommand
 *              'callback_data' =>  ''
 *            ])],
 */            [new InlineKeyboardButton([
-              'text' => 'Назад',
+              'text' => '↩️Назад',
               'callback_data' => 'get_hello:'
             ])
       		]);
