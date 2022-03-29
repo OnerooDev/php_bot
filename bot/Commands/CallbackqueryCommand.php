@@ -179,7 +179,7 @@ class CallbackqueryCommand extends SystemCommand
         $text .= $value ['name'] ."\n"
         ."Должность:" ." " .$value ['position'] ."\n"
         ."Номер:" ." " .$value ['number'] ."\n"
-        ."Почта:" ." " .$vaule ['email'] ."\n"
+//        ."Почта:" ." " .$vaule ['email'] ."\n"
         ."День Рождения:" ." " .$value ['birthday'] ."\n"
         .PHP_EOL;
         }
@@ -309,9 +309,8 @@ class CallbackqueryCommand extends SystemCommand
             'message_id' => $message_to_edit,
           ];
           Request::deleteMessage($data_edit);
-        //
-          $text = "Задачи".PHP_EOL;
-        //  $text .= "<b>Сделайте выбор</b>".PHP_EOL;
+
+          $text = "Создай меня".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
