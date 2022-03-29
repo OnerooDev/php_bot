@@ -75,7 +75,7 @@ class StartCommand extends SystemCommand
         $message = $this->getMessage();
 
         $chat    = $message->getChat($answer);
-        $user    = $message->getFrom();
+        $user    = $message->getFrom($answer);
         $text    = trim($message->getText(true));
         $chat_id = $chat->getId();
         $user_id = $user->getId();
@@ -87,7 +87,7 @@ class StartCommand extends SystemCommand
 
         $query = "SELECT * FROM `Contacts` WHERE `t_id` = '".$user_id."'";
         $answer = $mysqli->query($query);
-        if ($answer != null);
+        if ($answer != null)
 
           //Conversation start
           $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
