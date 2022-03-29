@@ -318,7 +318,7 @@ class CallbackqueryCommand extends SystemCommand
         			'text'  => '🖍Создать Задачу',
         			'callback_data'	=> 'get_Task'
         		])],
-            [new InlineKeyboardButton([
+            new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Сегодня',
               'callback_data' =>  'get_Task'
             ]),
