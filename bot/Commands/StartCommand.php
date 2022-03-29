@@ -87,10 +87,10 @@ class StartCommand extends SystemCommand
 
         $query = "SELECT * FROM `Contacts` WHERE `t_id` = '".$user_id."'";
         $answer = $mysqli->query($query);
-        if ($answer != false) {
+        if ($answer != null) {
 
           //Conversation start
-          $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
+          $this->conversation = new Conversation($answer, $user_id, $chat_id, $this->getName());
           $this->conversation->stop();
 
           if(isset($user->first_name) && !empty($user->first_name)) $name = $user->first_name;
