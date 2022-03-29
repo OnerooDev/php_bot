@@ -315,13 +315,21 @@ class CallbackqueryCommand extends SystemCommand
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
-        			'text'  => 'Задачи',
+        			'text'  => '🖍Создать Задачу',
         			'callback_data'	=> 'get_Task'
         		])],
-/**            [new InlineKeyboardButton([
+            [new InlineKeyboardButton([
+              'text'  =>  '📋🗓Мои Сегодня',
+              'callback_data' =>  'get_Task'
+            ])],
+            [new InlineKeyboardButton([
+              'text'  =>  '📋🗓Мои Все',
+              'callback_data' =>  'get_Task'
+            ])],
+/*            new InlineKeyboardButton([
 *              'text'  =>  '',
-*              'callback_data' =>  ''
-*            ])],
+*              'callback_data' =>  'get_Task'
+*            ]),
 */            [new InlineKeyboardButton([
               'text' => '↩️Назад',
               'callback_data' => 'get_hello:'
