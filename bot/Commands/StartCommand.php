@@ -72,7 +72,7 @@ class StartCommand extends SystemCommand
      */
     public function execute()
     {
-        $message = $this->getMessage($answer);
+        $message = $this->getMessage();
 
         $chat    = $message->getChat();
         $user    = $message->getFrom();
@@ -85,14 +85,9 @@ class StartCommand extends SystemCommand
 		    $mysqli = new \mysqli($this->config->host, $this->config->user, $this->config->password, $this->config->db);
         $mysqli->query("SET NAMES 'utf8'");
 
-// Добавим проверку входящих запросов к команде Start по user_id == 'твой id'
-//          if ($user_id) {If ($user_id ==)
-
-
         $query = "SELECT * FROM `Contacts` WHERE `t_id` = '".$user_id."'";
         $answer = $mysqli->query($query);
-        if ($answer != null) {
-
+        if ($answer != null) {IF ($user_id = $answer)
 
           //Conversation start
           $this->conversation = new Conversation($user_id, $chat_id, $this->getName());
