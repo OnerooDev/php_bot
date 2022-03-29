@@ -87,6 +87,7 @@ class StartCommand extends SystemCommand
 
         $query = "SELECT * FROM `Contacts` WHERE `t_id` = '".$user_id."'";
         $answer = $mysqli->query($query);
+        $answer = $answer->fetch_assoc();
         if ($answer != null) {
 
           //Conversation start
