@@ -100,7 +100,7 @@ class CallbackqueryCommand extends SystemCommand
             ])],
             [new InlineKeyboardButton([
               'text'  => '📋Задачи',
-              'callback_data' => 'get_Task'
+              'callback_data' => 'go_to_task'
             ]),
             new InlineKeyboardButton([
               'text'  => '📄3logicWiki',
@@ -299,10 +299,9 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
-//get_Task
+//Task
 //Начало
-      if($explode[0] == 'get_Task'){
-  //удаляем старое сообщение
+      if($explode[0] == 'go_to_task'){
          $message_to_edit = $message->getMessageId();
          $data_edit = [
             'chat_id'    => $chat_id,
@@ -310,20 +309,39 @@ class CallbackqueryCommand extends SystemCommand
           ];
           Request::deleteMessage($data_edit);
 
-          $text = "Создай меня".PHP_EOL;
+          $text = "Создай меня :)".PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🖍Создать Задачу',
-        			'callback_data'	=> 'get_Task'
+        			'callback_data'	=> 'Create_a_task'
         		])],
+
+            if($explode[0] == 'Create_a_task'){
+               $message_to_edit = $message->getMessageId();
+               $data_edit = [
+                  'chat_id'    => $chat_id,
+                  'message_id' => $message_to_edit,
+                ];
+                Request::deleteMessage($data_edit);
+
+                $text = "Создание новой задачи. После заполнения нажмите кнопку "Создать".
+                Необходимое поле - Заголовок.".PHP_EOL;
+
+                $inline_keyboard = new InlineKeyboard([
+                  new InlineKeyboardButton([
+                    'text'  => '🖍Создать Задачу',
+                    'callback_data'	=> 'Create_a_task'
+                  ])],
+
+
             [new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Сегодня',
               'callback_data' =>  'get_Task'
             ]),
             new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Все',
-              'callback_data' =>  'get_Task'
+              'callback_data' =>  'get_Task_All'
             ])],
 /*            new InlineKeyboardButton([
 *              'text'  =>  '',
