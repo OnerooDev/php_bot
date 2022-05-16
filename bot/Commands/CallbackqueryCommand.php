@@ -355,8 +355,16 @@ if($explode[0] == 'Create_a_task'){
         'callback_data' => 'get_hello:'
       ])
     ]);
+    //вносим необходимые данные в массив отправляемого сообщения
+      $datas['text'] = $text;
+      $datas['parse_mode'] = "MARKDOWN";
+      $datas['chat_id'] = $chat_id;
+      $datas['reply_markup'] = $inline_keyboard;
 
-    
+      return Request::sendMessage($datas);
+  };
+//Конец
+
 
       $data = [
   			'chat_id'      => $chat_id,
