@@ -80,20 +80,11 @@ class CallbackqueryCommand extends SystemCommand
   					'message_id' => $message_to_edit,
   				];
   				Request::deleteMessage($data_edit);
-        //
+
   				$text .= 'Ну привет '.$user_array['first_name'].PHP_EOL;
 
           $inline_keyboard = new InlineKeyboard([
-//          $inline_keyboard->addRow(
-            //Масив, пример $a = AddRow(1, 2, 3, 4, 5); print_f($a);
-            // будет отображена переменная а
-            //[1, 2, 3, 4, 5]
 
-/**            new InlineKeyboardButton([
-*              'text'  => 'Чат',
-*              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
-*            ]),
-*/
             new InlineKeyboardButton([
               'text'  => '🗓Таблица',
               'callback_data'     => 'get_Worktable'
@@ -299,8 +290,8 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
-//Task
-//Начало
+
+//Task Начало
       if($explode[0] == 'go_to_task'){
          $message_to_edit = $message->getMessageId();
          $data_edit = [
@@ -316,6 +307,26 @@ class CallbackqueryCommand extends SystemCommand
         			'text'  => '🖍Создать Задачу',
         			'callback_data'	=> 'Create_a_task'
         		])],
+
+            if($explode[0] == 'Create_a_task'){
+               $message_to_edit = $message->getMessageId();
+               $data_edit = [
+                  'chat_id'    => $chat_id,
+                  'message_id' => $message_to_edit,
+                ];
+                Request::deleteMessage($data_edit);
+
+                $text = "Создай меня :)".PHP_EOL;
+
+                $inline_keyboard = new InlineKeyboard([
+              		new InlineKeyboardButton([
+              			'text'  => '🖍Создать Задачу',
+              			'callback_data'	=> 'Create_a_task'
+              		])],
+
+
+
+
             [new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Сегодня',
               'callback_data' =>  'get_Task'
@@ -324,11 +335,7 @@ class CallbackqueryCommand extends SystemCommand
               'text'  =>  '📋🗓Мои Все',
               'callback_data' =>  'get_Task_All'
             ])],
-/*            new InlineKeyboardButton([
-*              'text'  =>  '',
-*              'callback_data' =>  'get_Task'
-*            ]),
-*/            [new InlineKeyboardButton([
+            [new InlineKeyboardButton([
               'text' => '↩️Назад',
               'callback_data' => 'get_hello:'
             ])
@@ -355,3 +362,19 @@ class CallbackqueryCommand extends SystemCommand
     }
 
 }
+
+
+
+
+
+// Заметки
+            //$inline_keyboard->addRow(
+            //Масив, пример $a = AddRow(1, 2, 3, 4, 5); print_f($a);
+            // будет отображена переменная а
+            //[1, 2, 3, 4, 5]
+
+/**            new InlineKeyboardButton([
+*              'text'  => 'Чат',
+*              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
+*            ]),
+*/
