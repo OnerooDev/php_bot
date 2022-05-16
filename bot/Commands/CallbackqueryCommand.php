@@ -307,26 +307,6 @@ class CallbackqueryCommand extends SystemCommand
         			'text'  => '🖍Создать Задачу',
         			'callback_data'	=> 'Create_a_task'
         		])],
-
-            if($explode[0] == 'Create_a_task'){
-               $message_to_edit = $message->getMessageId();
-               $data_edit = [
-                  'chat_id'    => $chat_id,
-                  'message_id' => $message_to_edit,
-                ];
-                Request::deleteMessage($data_edit);
-
-                $text = "Создай меня :)".PHP_EOL;
-
-                $inline_keyboard = new InlineKeyboard([
-              		new InlineKeyboardButton([
-              			'text'  => '🖍Создать Задачу',
-              			'callback_data'	=> 'Create_a_task'
-              		])],
-
-
-
-
             [new InlineKeyboardButton([
               'text'  =>  '📋🗓Мои Сегодня',
               'callback_data' =>  'get_Task'
@@ -350,6 +330,33 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
+//Test
+if($explode[0] == 'Create_a_task'){
+   $message_to_edit = $message->getMessageId();
+   $data_edit = [
+      'chat_id'    => $chat_id,
+      'message_id' => $message_to_edit,
+    ];
+    Request::deleteMessage($data_edit);
+
+    $text = "Создай меня :)".PHP_EOL;
+
+    $inline_keyboard = new InlineKeyboard([
+      new InlineKeyboardButton([
+        'text'  => '🖍Создать Задачу',
+        'callback_data'	=> 'Create_a_task'
+      ])],
+      new InlineKeyboardButton([
+        'text'  =>  '📋🗓Мои Все',
+        'callback_data' =>  'get_Task_All'
+      ])],
+      [new InlineKeyboardButton([
+        'text' => '↩️Назад',
+        'callback_data' => 'get_hello:'
+      ])
+    ]);
+
+    
 
       $data = [
   			'chat_id'      => $chat_id,
