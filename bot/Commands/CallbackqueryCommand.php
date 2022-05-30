@@ -339,8 +339,8 @@ class CallbackqueryCommand extends SystemCommand
           ];
           Request::deleteMessage($data_edit);
           $text = "Создание новой задачи.".PHP_EOL;
-//          $text .= "После заполнения нажмите кнопку Создать.".PHP_EOL;
-//          $text .= "Необходимое поле - Заголовок.".PHP_EOL;
+          $text .= "После заполнения нажмите кнопку Создать.".PHP_EOL;
+          $text .= "Необходимое поле - Заголовок.".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🟠Заголовок',
@@ -374,7 +374,6 @@ class CallbackqueryCommand extends SystemCommand
                 'text'  =>  '🗑Очистить',
                 'callback_data' =>  'get_item'
               ])]);
-
             //вносим необходимые данные в массив отправляемого сообщения
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
