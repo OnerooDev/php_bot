@@ -343,17 +343,17 @@ class CallbackqueryCommand extends SystemCommand
         		new InlineKeyboardButton([
         			'text'  => '🟠Заголовок',
         			'callback_data'	=> 'get_item'
-              ])],
-              [new InlineKeyboardButton([
-                'text'  =>  '🟠Описание',
-                'callback_data' =>  'get_item'
-              ])],
-              [new InlineKeyboardButton([
-                'text'  =>  '🟠Срок',
-                'callback_data' =>  'get_item'
-              ])
-            ]);
+              ])]);
 /**              [new InlineKeyboardButton([
+*                'text'  =>  '🟠Описание',
+*                'callback_data' =>  'get_item'
+*              ])],
+*              [new InlineKeyboardButton([
+*                'text'  =>  '🟠Срок',
+*                'callback_data' =>  'get_item'
+*              ])
+*            ]);
+*              [new InlineKeyboardButton([
 *                'text'  =>  '🟠Чат',
 *                'callback_data' =>  'get_item'
 *              ]),
@@ -395,8 +395,6 @@ class CallbackqueryCommand extends SystemCommand
     }
 
 }
-
-
 
 
 
