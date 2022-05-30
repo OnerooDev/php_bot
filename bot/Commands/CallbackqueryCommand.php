@@ -344,14 +344,14 @@ class CallbackqueryCommand extends SystemCommand
         			'text'  => '🟠Заголовок',
         			'callback_data'	=> 'get_item'
               ])],
-              new InlineKeyboardButton([
+              [new InlineKeyboardButton([
                 'text'  =>  '🟠Описание',
                 'callback_data' =>  'get_item'
-              ]),
+              ])],
               [new InlineKeyboardButton([
                 'text'  =>  '🟠Срок',
                 'callback_data' =>  'get_item'
-              ])
+              ])]);
 /**              [new InlineKeyboardButton([
 *                'text'  =>  '🟠Чат',
 *                'callback_data' =>  'get_item'
@@ -372,7 +372,7 @@ class CallbackqueryCommand extends SystemCommand
 *                'text'  =>  '🗑Очистить',
 *                'callback_data' =>  'get_item'
 *              ])
-**/        		]);
+**/
             //вносим необходимые данные в массив отправляемого сообщения
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
