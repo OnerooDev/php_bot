@@ -330,7 +330,7 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
-//test
+//Menu Create_a_task
           if($explode[0] == 'Create_a_task'){
           $message_to_edit = $message->getMessageId();
           $data_edit = [
@@ -338,13 +338,41 @@ class CallbackqueryCommand extends SystemCommand
             'message_id' => $message_to_edit,
           ];
           Request::deleteMessage($data_edit);
-
-          $text = "Создай меня :)".PHP_EOL;
+          $text = "Создание новой задачи. После заполнения нажмите кнопку "Создать".Необходимое поле - Заголовок.".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
-        			'text'  => '🖍Создать Задачу',
+        			'text'  => '🟠Заголовок',
         			'callback_data'	=> 'get_item'
-        		])]);
+              ]),
+              new InlineKeyboardButton([
+                'text'  =>  '🟠Описание',
+                'callback_data' =>  'get_item'
+              ]),
+              new InlineKeyboardButton([
+                'text'  =>  '🟠Срок',
+                'callback_data' =>  'get_item'
+              ]),
+              [new InlineKeyboardButton([
+                'text'  =>  '🟠Чат',
+                'callback_data' =>  'get_item'
+              ]),
+              new InlineKeyboardButton([
+                'text'  =>  '🟠Исполнитель',
+                'callback_data' =>  'get_item'
+              ]),
+              [new InlineKeyboardButton([
+                'text'  =>  '✅Создать',
+                'callback_data' =>  'get_item'
+              ])],
+              [new InlineKeyboardButton([
+                'text' => '↩️Назад',
+                'callback_data' => 'go_to_task:'
+              ]),
+              new InlineKeyboardButton([
+                'text'  =>  '🗑Очистить',
+                'callback_data' =>  'get_item'
+              ])
+        		]);
             //вносим необходимые данные в массив отправляемого сообщения
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
@@ -353,7 +381,7 @@ class CallbackqueryCommand extends SystemCommand
 
               return Request::sendMessage($datas);
           };
-
+//Конец
 
       $data = [
   			'chat_id'      => $chat_id,
