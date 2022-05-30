@@ -101,10 +101,6 @@ class CallbackqueryCommand extends SystemCommand
               'text'  => '☎️Контакты',
               'callback_data' => 'get_Contacts'
             ])],
-//            new InlineKeyboardButton([
-//              'text'  => 'Item',
-//              'callback_data'	=> 'get_item:'
-//            ]),
             [new InlineKeyboardButton([
               'text'  => '↩️Назад',
               'callback_data'	=> 'get_back:'
@@ -290,7 +286,6 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
-
 //Task Начало
       if($explode[0] == 'go_to_task'){
          $message_to_edit = $message->getMessageId();
@@ -321,7 +316,6 @@ class CallbackqueryCommand extends SystemCommand
             ])
       		]);
 
-        //вносим необходимые данные в массив отправляемого сообщения
           $datas['text'] = $text;
           $datas['parse_mode'] = "MARKDOWN";
           $datas['chat_id'] = $chat_id;
@@ -414,3 +408,7 @@ class CallbackqueryCommand extends SystemCommand
 *              'url'     => 'https://t.me/joinchat/IDrw6HcS-ak0ZmEy'
 *            ]),
 */
+//            new InlineKeyboardButton([
+//              'text'  => 'Item',
+//              'callback_data'	=> 'get_item:'
+//            ]),
