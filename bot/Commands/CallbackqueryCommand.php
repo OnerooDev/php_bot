@@ -351,28 +351,28 @@ class CallbackqueryCommand extends SystemCommand
               new InlineKeyboardButton([
                 'text'  =>  '🟠Срок',
                 'callback_data' =>  'get_item'
-              ])],
-              [new InlineKeyboardButton([
-                'text'  =>  '🟠Чат',
-                'callback_data' =>  'get_item'
-              ]),
-              new InlineKeyboardButton([
-                'text'  =>  '🟠Исполнитель',
-                'callback_data' =>  'get_item'
-              ])],
-              [new InlineKeyboardButton([
-                'text'  =>  '✅Создать',
-                'callback_data' =>  'get_item'
-              ])],
-              [new InlineKeyboardButton([
-                'text' => '↩️Назад',
-                'callback_data' => 'go_to_task:'
-              ]),
-              new InlineKeyboardButton([
-                'text'  =>  '🗑Очистить',
-                'callback_data' =>  'get_item'
               ])
-        		]);
+/**              [new InlineKeyboardButton([
+*                'text'  =>  '🟠Чат',
+*                'callback_data' =>  'get_item'
+*              ]),
+*              new InlineKeyboardButton([
+*                'text'  =>  '🟠Исполнитель',
+*                'callback_data' =>  'get_item'
+*              ])],
+*              [new InlineKeyboardButton([
+*                'text'  =>  '✅Создать',
+*                'callback_data' =>  'get_item'
+*              ])],
+*              [new InlineKeyboardButton([
+*                'text' => '↩️Назад',
+*                'callback_data' => 'go_to_task:'
+*              ]),
+*              new InlineKeyboardButton([
+*                'text'  =>  '🗑Очистить',
+*                'callback_data' =>  'get_item'
+*              ])
+**/        		]);
             //вносим необходимые данные в массив отправляемого сообщения
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
