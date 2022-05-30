@@ -359,7 +359,7 @@ class CallbackqueryCommand extends SystemCommand
               new InlineKeyboardButton([
                 'text'  =>  '🟠Исполнитель',
                 'callback_data' =>  'get_item'
-              ]),
+              ])],
               [new InlineKeyboardButton([
                 'text'  =>  '✅Создать',
                 'callback_data' =>  'get_item'
