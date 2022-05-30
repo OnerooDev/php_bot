@@ -330,7 +330,7 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
       };
 //Конец
-//Menu Create_a_task
+//Menu Create_a_task начало
           if($explode[0] == 'Create_a_task'){
           $message_to_edit = $message->getMessageId();
           $data_edit = [
@@ -341,6 +341,11 @@ class CallbackqueryCommand extends SystemCommand
           $text = "Создание новой задачи.".PHP_EOL;
           $text .= "После заполнения нажмите кнопку Создать.".PHP_EOL;
           $text .= "Необходимое поле - Заголовок.".PHP_EOL;
+          $text .= "🔸Заголовок:".PHP_EOL;
+          $text .= "🔸Чат:".PHP_EOL;
+          $text .= "🔸Исполнитель:".PHP_EOL;
+          $text .= "🔸Срок".PHP_EOL;
+          $text .= "📜Описание".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🟠Заголовок',
@@ -374,7 +379,7 @@ class CallbackqueryCommand extends SystemCommand
                 'text'  =>  '🗑Очистить',
                 'callback_data' =>  'get_item'
               ])]);
-            //вносим необходимые данные в массив отправляемого сообщения
+
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
               $datas['chat_id'] = $chat_id;
