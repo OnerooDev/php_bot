@@ -343,14 +343,14 @@ class CallbackqueryCommand extends SystemCommand
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🖍Создать Задачу',
-        			'callback_data'	=> 'Create_a_task'
-        		])];
+        			'callback_data'	=> 'get_item'
+        		])]);
             //вносим необходимые данные в массив отправляемого сообщения
               $datas['text'] = $text;
               $datas['parse_mode'] = "MARKDOWN";
               $datas['chat_id'] = $chat_id;
               $datas['reply_markup'] = $inline_keyboard;
-    
+
               return Request::sendMessage($datas);
           };
 
