@@ -345,7 +345,7 @@ class CallbackqueryCommand extends SystemCommand
           $text .= "🔸Чат:".PHP_EOL;
           $text .= "🔸Исполнитель:".PHP_EOL;
           $text .= "🔸Срок".PHP_EOL;
-          $text .= "📜Описание".PHP_EOL;
+          $text .= "📜Описание:".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🟠Заголовок',
