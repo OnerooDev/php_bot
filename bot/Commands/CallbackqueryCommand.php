@@ -331,7 +331,7 @@ class CallbackqueryCommand extends SystemCommand
           $text .= "Необходимое поле - Заголовок.".PHP_EOL;
           $text .= "🔸Заголовок:".PHP_EOL;
           $text .= "🔸Чат:".PHP_EOL;
-          $text .= '🔸Исполнитель:'.$user_array['first_name'].PHP_EOL;
+          $text .= '🔸Исполнитель: '.$user_array['first_name'].PHP_EOL;
           $text .= "🔸Срок:".PHP_EOL;
           $text .= "📜Описание:".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
