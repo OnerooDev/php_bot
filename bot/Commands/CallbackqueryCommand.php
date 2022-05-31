@@ -349,7 +349,7 @@ class CallbackqueryCommand extends SystemCommand
               ])],
               [new InlineKeyboardButton([
                 'text'  =>  '🟠Чат',
-                'callback_data' =>  'get_item'
+                'callback_data' =>  'get_group'
               ]),
               new InlineKeyboardButton([
                 'text'  =>  '🟠Исполнитель',
@@ -428,6 +428,30 @@ class CallbackqueryCommand extends SystemCommand
           return Request::sendMessage($datas);
         };
 //button get_description end|Конец
+//button get_group Begin|Начало
+          if($explode[0] == 'get_group'){
+
+          $message_to_edit = $message->getMessageId();
+          $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+          $text = "Выберите чат:".PHP_EOL;
+
+
+
+
+
+
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+        };
+//button get_group end|Конец
         $data = [
   			'chat_id'      => $chat_id,
   			'parse_mode'   => 'MARKDOWN',
