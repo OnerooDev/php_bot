@@ -341,7 +341,7 @@ class CallbackqueryCommand extends SystemCommand
             ])],
               [new InlineKeyboardButton([
                 'text'  =>  '🟠Описание',
-                'callback_data' =>  'get_item'
+                'callback_data' =>  'get_description'
               ]),
               new InlineKeyboardButton([
                 'text'  =>  '🟠Срок',
@@ -376,7 +376,7 @@ class CallbackqueryCommand extends SystemCommand
               return Request::sendMessage($datas);
           };
 //Menu Create_a_task end|Конец
-//button header Begin|Начало
+//button get_header Begin|Начало
           if($explode[0] == 'get_header'){
           $query = "SELECT * FROM `Create_Task`";
           $task_Table = $mysqli->query($query);
@@ -401,8 +401,33 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//button header end|Конец
+//button get_header end|Конец
+//button get_description Begin|Начало
+          if($explode[0] == 'get_description'){
+          $query = "SELECT * FROM `Create_Task`";
+          $task_Table = $mysqli->query($query);
+          $tasktable_array = $task_Table->fetch_array();
+          $message_to_edit = $message->getMessageId();
+          $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+          $text = "Отправьте описание:".PHP_EOL;
 
+
+
+
+
+
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+        };
+//button get_description end|Конец
         $data = [
   			'chat_id'      => $chat_id,
   			'parse_mode'   => 'MARKDOWN',
