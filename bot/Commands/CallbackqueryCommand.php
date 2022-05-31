@@ -317,6 +317,9 @@ class CallbackqueryCommand extends SystemCommand
 //end|Конец
 //Menu Create_a_task начало
           if($explode[0] == 'Create_a_task'){
+            $query = "SELECT * FROM `user` WHERE `id` = '".$user_id."'";
+            $user_query = $mysqli->query($query);
+            $user_array = $user_query->fetch_array();
           $message_to_edit = $message->getMessageId();
           $data_edit = [
             'chat_id'    => $chat_id,
