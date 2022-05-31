@@ -1,12 +1,4 @@
 <?php
-/**
- * This file is part of the TelegramBot package.
- *
- * (c) Avtandil Kikabidze aka LONGMAN <akalongman@gmail.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
 
 namespace Longman\TelegramBot\Commands\SystemCommands;
 
@@ -67,7 +59,7 @@ class CallbackqueryCommand extends SystemCommand
 
       $explode = explode(":", $callback_data);
 
-//get_hello
+//get_hello Begin|Начало
 		  if($explode[0] == 'get_hello'){
         //извлекаем данные из бд
           $query = "SELECT * FROM `user` WHERE `id` = '".$user_id."'";
@@ -114,8 +106,8 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       }
-
-//get_back
+//get_hello end|Конец
+//get_back Begin|Начало
       if($explode[0] == 'get_back'){
         //удаляем старое сообщение
   				$message_to_edit = $message->getMessageId();
@@ -146,7 +138,8 @@ class CallbackqueryCommand extends SystemCommand
 
             return Request::sendMessage($datas);
         }
-//get_Contacts Начало
+//get_back end|Конец
+//get_Contacts Begin|Начало
       if($explode[0] == 'get_Contacts'){
         $query = "SELECT * FROM `Contacts`";
         $all_contacts = $mysqli->query($query);
@@ -193,9 +186,8 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//get_Contacts Конец
-
-//get_Worktable Начало
+//get_Contacts end|Конец
+//get_Worktable Begin|Начало
       if($explode[0] == 'get_Worktable'){
         $query = "SELECT * FROM `Worktable`";
         $all_worktable = $mysqli->query($query);
@@ -247,9 +239,8 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//Конец
-//get_3lWiki
-//Начало
+//get_Worktable end|Конец
+//get_3lwiki Begin|Начало
       if($explode[0] == 'get_3lWiki'){
   //удаляем старое сообщение
          $message_to_edit = $message->getMessageId();
@@ -285,8 +276,8 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//Конец
-//Task Начало
+//get_3lwiki end|Конец
+//go_to_task Begin|Начало
       if($explode[0] == 'go_to_task'){
          $message_to_edit = $message->getMessageId();
          $data_edit = [
@@ -323,7 +314,7 @@ class CallbackqueryCommand extends SystemCommand
 
           return Request::sendMessage($datas);
       };
-//Конец
+//end|Конец
 //Menu Create_a_task начало
           if($explode[0] == 'Create_a_task'){
           $message_to_edit = $message->getMessageId();
@@ -337,13 +328,13 @@ class CallbackqueryCommand extends SystemCommand
           $text .= "Необходимое поле - Заголовок.".PHP_EOL;
           $text .= "🔸Заголовок:".PHP_EOL;
           $text .= "🔸Чат:".PHP_EOL;
-          $text .= "🔸Исполнитель:".PHP_EOL;
+          $text .= '🔸Исполнитель:'.$user_array['first_name'].PHP_EOL;
           $text .= "🔸Срок:".PHP_EOL;
           $text .= "📜Описание:".PHP_EOL;
           $inline_keyboard = new InlineKeyboard([
         		new InlineKeyboardButton([
         			'text'  => '🟠Заголовок',
-        			'callback_data'	=> 'get_item'
+        			'callback_data'	=> 'get_header'
             ])],
               [new InlineKeyboardButton([
                 'text'  =>  '🟠Описание',
@@ -381,9 +372,35 @@ class CallbackqueryCommand extends SystemCommand
 
               return Request::sendMessage($datas);
           };
-//Конец
+//Menu Create_a_task end|Конец
+//button header Begin|Начало
+          if($explode[0] == 'get_header'){
+          $query = "SELECT * FROM `Create_Task`";
+          $task_Table = $mysqli->query($query);
+          $tasktable_array = $task_Table->fetch_array();
+          $message_to_edit = $message->getMessageId();
+          $data_edit = [
+            'chat_id'    => $chat_id,
+            'message_id' => $message_to_edit,
+          ];
+          Request::deleteMessage($data_edit);
+          $text = "Отправьте заголовок:".PHP_EOL;
 
-      $data = [
+
+
+
+
+
+          $datas['text'] = $text;
+          $datas['parse_mode'] = "MARKDOWN";
+          $datas['chat_id'] = $chat_id;
+          $datas['reply_markup'] = $inline_keyboard;
+
+          return Request::sendMessage($datas);
+      };
+//button header end|Конец
+
+        $data = [
   			'chat_id'      => $chat_id,
   			'parse_mode'   => 'MARKDOWN',
   			'text'         => $text,
