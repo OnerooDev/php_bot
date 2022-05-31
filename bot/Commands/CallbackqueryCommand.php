@@ -458,7 +458,7 @@ class CallbackqueryCommand extends SystemCommand
             'message_id' => $message_to_edit,
           ];
           Request::deleteMessage($data_edit);
-          $text = "Выберите чат:".PHP_EOL;
+          $text = "Выберите исполнителя:".PHP_EOL;
 
 
 
