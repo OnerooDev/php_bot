@@ -450,27 +450,27 @@ class CallbackqueryCommand extends SystemCommand
         };
 //button get_group end|Конец
 //button get_executor Begin|Начало
-          if($explode[0] == 'get_executor'){
-
-          $message_to_edit = $message->getMessageId();
-          $data_edit = [
-            'chat_id'    => $chat_id,
-            'message_id' => $message_to_edit,
-          ];
-          Request::deleteMessage($data_edit);
-          $text = "Выберите исполнителя:".PHP_EOL;
-
-
-
-          $datas['text'] = $text;
-          $datas['parse_mode'] = "MARKDOWN";
-          $datas['chat_id'] = $chat_id;
-          $datas['reply_markup'] = $inline_keyboard;
-
-          return Request::sendMessage($datas);
-        };
+/**          if($explode[0] == 'get_executor'){
+*
+*          $message_to_edit = $message->getMessageId();
+*          $data_edit = [
+*            'chat_id'    => $chat_id,
+*            'message_id' => $message_to_edit,
+*          ];
+*          Request::deleteMessage($data_edit);
+*          $text = "Выберите исполнителя:".PHP_EOL;
+*
+*
+*
+*          $datas['text'] = $text;
+*          $datas['parse_mode'] = "MARKDOWN";
+*          $datas['chat_id'] = $chat_id;
+*          $datas['reply_markup'] = $inline_keyboard;
+*
+*          return Request::sendMessage($datas);
+*        };
 //button get_executor end|Конец
-        $data = [
+**/        $data = [
   			'chat_id'      => $chat_id,
   			'parse_mode'   => 'MARKDOWN',
   			'text'         => $text,
