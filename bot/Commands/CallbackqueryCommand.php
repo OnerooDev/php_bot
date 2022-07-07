@@ -377,7 +377,7 @@ class CallbackqueryCommand extends SystemCommand
           };
 //Menu Create_a_task end|Конец
 //button get_header Begin|Начало
-          if($explode[0] == 'get_header'){
+/**          if($explode[0] == 'get_header'){
           $query = "SELECT * FROM `Create_Task`";
           $task_Table = $mysqli->query($query);
           $tasktable_array = $task_Table->fetch_array();
